@@ -48,6 +48,7 @@ function MultiDragPlugin() {
     this.defaults = {
       selectedClass: "sortable-selected",
       multiDragKey: null,
+      clearOnOutsideClick: false,
       setData(dataTransfer, dragEl) {
         let data = "";
         if (multiDragElements.length && multiDragSortable === sortable) {
@@ -539,7 +540,7 @@ function MultiDragPlugin() {
       // Only deselect if target is not item in this sortable
       if (
         evt &&
-        closest(evt.target, this.options.draggable, this.sortable.el, false)
+        closest(evt.target, this.options.draggable, this.sortable.el, false) && !this.options.clearOnOutsideClick
       )
         return;
 
